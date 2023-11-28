@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Practic2AbganeevModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="TaskPriority">
+    <Key>
+      <PropertyRef Name="priorityid" />
+    </Key>
+    <Property Name="priorityid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="descriprion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Tasks" Relationship="Self.FK_Tasks_TaskPriority" FromRole="TaskPriority" ToRole="Tasks" />
+  </EntityType>
+  <EntityType Name="Tasks">
+    <Key>
+      <PropertyRef Name="Taskid" />
+    </Key>
+    <Property Name="Taskid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="225" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="deadline" Type="DateTime" Precision="0" />
+    <Property Name="priorityid" Type="Int32" />
+    <NavigationProperty Name="TaskPriority" Relationship="Self.FK_Tasks_TaskPriority" FromRole="Tasks" ToRole="TaskPriority" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Tasks_TaskPriority">
+    <End Role="TaskPriority" Type="Self.TaskPriority" Multiplicity="0..1" />
+    <End Role="Tasks" Type="Self.Tasks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaskPriority">
+        <PropertyRef Name="priorityid" />
+      </Principal>
+      <Dependent Role="Tasks">
+        <PropertyRef Name="priorityid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Practic2AbganeevEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TaskPriority" EntityType="Self.TaskPriority" />
+    <EntitySet Name="Tasks" EntityType="Self.Tasks" />
+    <EntitySet Name="User" EntityType="Self.User" />
+    <AssociationSet Name="FK_Tasks_TaskPriority" Association="Self.FK_Tasks_TaskPriority">
+      <End Role="TaskPriority" EntitySet="TaskPriority" />
+      <End Role="Tasks" EntitySet="Tasks" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

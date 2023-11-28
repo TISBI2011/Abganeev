@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище Practic2AbganeevModelContainer" CdmEntityContainer="Practic2AbganeevEntities">
+    <EntitySetMapping Name="TaskPriority">
+      <EntityTypeMapping TypeName="Practic2AbganeevModel.TaskPriority">
+        <MappingFragment StoreEntitySet="TaskPriority">
+          <ScalarProperty Name="priorityid" ColumnName="priorityid" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="descriprion" ColumnName="descriprion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tasks">
+      <EntityTypeMapping TypeName="Practic2AbganeevModel.Tasks">
+        <MappingFragment StoreEntitySet="Tasks">
+          <ScalarProperty Name="Taskid" ColumnName="Taskid" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="deadline" ColumnName="deadline" />
+          <ScalarProperty Name="priorityid" ColumnName="priorityid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="Practic2AbganeevModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
